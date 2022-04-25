@@ -33,10 +33,16 @@ const initTooltips = () => {
 
         tooltip.style.top = `${tooltipTop}px`;
       }
-      tooltip.style.left = `0px`;
+
+      if (targetRect.left > tooltipRect.width / 2) {
+        const tooltipLeft = targetRect.left - tooltipRect / 2;
+
+        tooltip.style.left = `${tooltipLeft}px`;
+      } else {
+        tooltip.style.left = "5px";
+      }
 
       tooltip.classList.add("active");
-      console.log("#### tooltip active 4");
     }
   };
 
@@ -52,7 +58,7 @@ const initTooltips = () => {
 
   for (const element of tooltipElements) {
     element.addEventListener("mouseenter", tooltipMouseEnterHandler);
-    element.addEventListener("mouseleave", tooltipMouseLeaveHandler);
+    // element.addEventListener("mouseleave", tooltipMouseLeaveHandler);
     // element.addEventListener("mouseover", tooltipMouseOverHandler);
   }
 
