@@ -3,5 +3,19 @@ body {
 }
 
 .tooltip {
-  display: none;
+  visibility: hidden;
+  position: absolute;
+  z-index: -9999;
+  left: -999;
+  top: -999;
+}
+
+.tooltip.active {
+  visibility: visible;
+}
+
+.tooltip .box {
+  padding: 5px;
+  background-color: #808080;
+  color: #fff;
 }
