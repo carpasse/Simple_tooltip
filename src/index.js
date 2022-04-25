@@ -17,7 +17,7 @@ const initTooltips = () => {
     const text = target.dataset.tooltip;
 
     if (text) {
-      tooltip.innerHTML = text;
+      tooltipBox.innerHTML = text;
       // TODO: POSITION TOOLTIP ON TOP RIGHT IF THERE IS SPACE ELSE POSITION ON TOP BOTTOM
       const targetRect = target.getBoundingClientRect();
       const tooltipRect = tooltip.getBoundingClientRect();
@@ -33,13 +33,15 @@ const initTooltips = () => {
 
         tooltip.style.top = `${tooltipTop}px`;
       }
+      tooltip.style.left = `0px`;
 
       tooltip.classList.add("active");
+      console.log("#### tooltip active 4");
     }
   };
 
   const tooltipMouseLeaveHandler = () => {
-    tooltip.innerHTML = "";
+    tooltipBox.innerHTML = "";
     tooltip.classList.remove("active");
   };
 
@@ -51,7 +53,7 @@ const initTooltips = () => {
   for (const element of tooltipElements) {
     element.addEventListener("mouseenter", tooltipMouseEnterHandler);
     element.addEventListener("mouseleave", tooltipMouseLeaveHandler);
-    element.addEventListener("mouseover", tooltipMouseOverHandler);
+    // element.addEventListener("mouseover", tooltipMouseOverHandler);
   }
 
   // Return a cleanup function

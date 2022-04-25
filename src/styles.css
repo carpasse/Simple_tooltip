@@ -5,17 +5,18 @@ body {
 .tooltip {
   visibility: hidden;
   position: absolute;
-  z-index: -9999;
+  z-index: -999;
   left: -999;
   top: -999;
+  background-color: #808080;
+  color: #fff;
 }
 
 .tooltip.active {
   visibility: visible;
+  z-index: 999;
 }
 
 .tooltip .box {
   padding: 5px;
-  background-color: #808080;
-  color: #fff;
 }
