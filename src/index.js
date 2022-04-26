@@ -1,7 +1,5 @@
 import "./styles.css";
 
-const TOOLTIP_TIP_HEIGHT = 15;
-
 const initTooltips = () => {
   const tooltipElements = Array.from(
     document.querySelectorAll("[data-tooltip]")
@@ -15,33 +13,11 @@ const initTooltips = () => {
   const tooltipMouseEnterHandler = (event) => {
     const target = event.target;
     const text = target.dataset.tooltip;
+    const position = target.dataset.tooltipPosition || "top";
 
     if (text) {
       tooltipBox.innerHTML = text;
-      // TODO: POSITION TOOLTIP ON TOP RIGHT IF THERE IS SPACE ELSE POSITION ON TOP BOTTOM
-      const targetRect = target.getBoundingClientRect();
-      const tooltipRect = tooltip.getBoundingClientRect();
-
-      if (targetRect.top > tooltipRect.height + TOOLTIP_TIP_HEIGHT) {
-        const tooltipTop =
-          targetRect.top - tooltipRect.height - TOOLTIP_TIP_HEIGHT;
-
-        tooltip.style.top = `${tooltipTop}px`;
-      } else {
-        const tooltipTop =
-          targetRect.top + tooltipRect.height + TOOLTIP_TIP_HEIGHT;
-
-        tooltip.style.top = `${tooltipTop}px`;
-      }
-
-      if (targetRect.left > tooltipRect.width / 2) {
-        const tooltipLeft = targetRect.left - tooltipRect / 2;
-
-        tooltip.style.left = `${tooltipLeft}px`;
-      } else {
-        tooltip.style.left = "5px";
-      }
-
+      tooltip.classList.add(position);
       tooltip.classList.add("active");
     }
   };

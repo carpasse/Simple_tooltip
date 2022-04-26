@@ -6,14 +6,26 @@
   </head>
 
   <body>
-    <section data-tooltip="header tooltip test" id="exercise_tooltipe">
-      <h1>Simple tooltip</h1>
-      <p>
-        Add a simple tooltip that shows the content of "data-tooltip" attribute
-      </p>
-    </section>
-
-    <span data-tooltip="This is a test tooltip">Some text</span>
+    <div class="tooltip_positions">
+      <div class="item">
+        <span data-tooltip="tooltip text" data-tooltip-position="top">top</span>
+      </div>
+      <div class="item">
+        <span data-tooltip="tooltip text" data-tooltip-position="bottom"
+          >bottom</span
+        >
+      </div>
+      <div class="item">
+        <span data-tooltip="tooltip text" data-tooltip-position="left"
+          >left</span
+        >
+      </div>
+      <div class="item">
+        <span data-tooltip="tooltip text" data-tooltip-position="right"
+          >right</span
+        >
+      </div>
+    </div>
 
     <script src="src/index.js"></script>
   </body>

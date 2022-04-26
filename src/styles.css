@@ -2,21 +2,47 @@ body {
   font-family: sans-serif;
 }
 
+.tooltip_positions {
+  margin-top: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
 .tooltip {
   visibility: hidden;
   position: absolute;
-  z-index: -999;
-  left: -999;
-  top: -999;
-  background-color: #808080;
+  z-index: -1;
   color: #fff;
 }
 
 .tooltip.active {
   visibility: visible;
-  z-index: 999;
+  z-index: 1;
 }
 
 .tooltip .box {
-  padding: 5px;
+  background-color: #555;
+  padding: 0.5em;
+  border-radius: 6px;
+}
+
+.tooltip .box::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  border-width: 5px;
+  margin-left: -5px;
+  border-style: solid;
+}
+
+.tooltip.top .box::after {
+  top: 100%;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip.bottom .box::after {
+  bottom: 100%;
+  border-color: transparent transparent #555 transparent;
 }
