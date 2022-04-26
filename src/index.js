@@ -1,14 +1,18 @@
 import "./styles.css";
 
+const tooltipPosition = {
+  BOTTOM: "bottom",
+  LEFT: "left",
+  RIGHT: "right",
+  TOP: "top"
+};
+
 const initTooltips = () => {
   const tooltipElements = Array.from(
     document.querySelectorAll("[data-tooltip]")
   );
   const tooltip = document.createElement("div");
   const tooltipBox = document.createElement("div");
-  const tooltipMouseOverHandler = (event) => {
-    // TODO: POSITION TOOLTIP TIP to follow the caret
-  };
 
   const tooltipMouseEnterHandler = (event) => {
     const target = event.target;
@@ -24,7 +28,7 @@ const initTooltips = () => {
 
   const tooltipMouseLeaveHandler = () => {
     tooltipBox.innerHTML = "";
-    tooltip.classList.remove("active");
+    tooltip.classList.remove("active", ...Object.values(tooltipPosition));
   };
 
   tooltip.classList.add("tooltip");
@@ -34,8 +38,7 @@ const initTooltips = () => {
 
   for (const element of tooltipElements) {
     element.addEventListener("mouseenter", tooltipMouseEnterHandler);
-    // element.addEventListener("mouseleave", tooltipMouseLeaveHandler);
-    // element.addEventListener("mouseover", tooltipMouseOverHandler);
+    element.addEventListener("mouseleave", tooltipMouseLeaveHandler);
   }
 
   // Return a cleanup function
@@ -43,7 +46,6 @@ const initTooltips = () => {
     for (const element of tooltipElements) {
       element.removeEventListener("mouseenter", tooltipMouseEnterHandler);
       element.removeEventListener("mouseleave", tooltipMouseLeaveHandler);
-      element.removeEventListener("mouseover", tooltipMouseOverHandler);
     }
   };
 };

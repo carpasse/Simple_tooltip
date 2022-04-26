@@ -31,10 +31,20 @@ body {
 .tooltip .box::after {
   content: "";
   position: absolute;
-  left: 50%;
   border-width: 5px;
-  margin-left: -5px;
   border-style: solid;
+}
+
+.tooltip.top .box::after,
+.tooltip.bottom .box::after {
+  left: 50%;
+  margin-left: -5px;
+}
+
+.tooltip.left .box::after,
+.tooltip.right .box::after {
+  top: 50%;
+  margin-top: -5px;
 }
 
 .tooltip.top .box::after {
@@ -45,4 +55,14 @@ body {
 .tooltip.bottom .box::after {
   bottom: 100%;
   border-color: transparent transparent #555 transparent;
+}
+
+.tooltip.left .box::after {
+  left: 100%;
+  border-color: transparent transparent transparent #555;
+}
+
+.tooltip.right .box::after {
+  right: 100%;
+  border-color: transparent #555 transparent transparent;
 }
