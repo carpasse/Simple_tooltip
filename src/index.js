@@ -1,3 +1,4 @@
+import debounce from "lodash.debounce";
 import "./styles.css";
 
 const tooltipPosition = {
@@ -14,7 +15,7 @@ const initTooltips = () => {
   const tooltip = document.createElement("div");
   const tooltipBox = document.createElement("div");
 
-  const tooltipMouseEnterHandler = (event) => {
+  const tooltipMouseEnterHandler = debounce((event) => {
     const target = event.target;
     const text = target.dataset.tooltip;
     const position = target.dataset.tooltipPosition || "top";
@@ -55,12 +56,12 @@ const initTooltips = () => {
           break;
       }
     }
-  };
+  }, 300);
 
-  const tooltipMouseLeaveHandler = () => {
+  const tooltipMouseLeaveHandler = debounce(() => {
     tooltipBox.innerHTML = "";
     tooltip.classList.remove("active", ...Object.values(tooltipPosition));
-  };
+  }, 300);
 
   tooltip.classList.add("tooltip");
   tooltipBox.classList.add("box");
