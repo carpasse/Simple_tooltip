@@ -1,5 +1,12 @@
-body {
+:root {
   font-family: sans-serif;
+  line-height: 1.2;
+}
+
+[data-tooltip] {
+  padding: 0.5em;
+  cursor: pointer;
+  display: block;
 }
 
 .tooltip_positions {
